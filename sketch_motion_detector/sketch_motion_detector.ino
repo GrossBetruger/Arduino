@@ -4,14 +4,13 @@
 #define COMMS_WAIT 75
 #define SONAR_WAIT 10
 #define SONAR_LONG_WAIT 50
-
 #define LED 9
 
-long get_distance(){
-//  output low to make sure signal is clean
+long get_distance() {
+  //  output low to make sure signal is clean
   digitalWrite(TRIGGER, LOW);
   delayMicroseconds(2);
-  
+  //  shot 10 microseconds trigger wave
   digitalWrite(TRIGGER, HIGH);
   delayMicroseconds(SONAR_WAIT);
   digitalWrite(TRIGGER, LOW);
@@ -39,6 +38,6 @@ void loop() {
   if (distance < 2500) digitalWrite(LED, HIGH);
   else digitalWrite(LED, LOW);
   delay(COMMS_WAIT);
-  
+
 
 }
