@@ -5,6 +5,8 @@
 #define SONAR_WAIT 10
 #define SONAR_LONG_WAIT 50
 #define LED 9
+#define BUZZER 10
+#define ALARM_DISTANCE 12000
 
 long get_distance() {
   //  output low to make sure signal is clean
@@ -28,6 +30,7 @@ void setup() {
   pinMode(TRIGGER, OUTPUT);
   pinMode(ECHO, INPUT);
   pinMode(LED, OUTPUT);
+  pinMode(BUZZER, OUTPUT);
   Serial.begin(COMMS_SPEED);
 
 }
@@ -35,9 +38,9 @@ void setup() {
 void loop() {
   unsigned long distance = get_distance();
   Serial.println(distance);
-  if (distance < 2500) digitalWrite(LED, HIGH);
-  else digitalWrite(LED, LOW);
+  boolean alarm = (distance < ALARM_DISTANCE);
+  digitalWrite(LED, alarm);
+  digitalWrite(BUZZER, alarm);
   delay(COMMS_WAIT);
-
 
 }
