@@ -1,5 +1,5 @@
 int sensePin = 0;
-int refereceRate = 75;
+int refreshRate = 75;
 int lightSensorInput; 
 int LEDOnThreshold = 900;
 int LED = 13;
@@ -21,6 +21,6 @@ void loop() {
   else {
     digitalWrite(LED, LOW);
   }
-  delay(refereceRate);
+  delay(refreshRate);
 }
 
