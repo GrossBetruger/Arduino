@@ -40,7 +40,8 @@ void loop() {
   Serial.println(distance);
   boolean alarm = (distance < ALARM_DISTANCE);
   digitalWrite(LED, alarm);
-  digitalWrite(BUZZER, alarm);
+  if (alarm) tone(BUZZER, alarm*5);
+  else noTone(BUZZER);
   delay(COMMS_WAIT);
 
 }
